@@ -1,105 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Student Registration & Records</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-<div class="container container-box">
-  <h2 class="mb-4 text-center">Student Registration</h2>
-  <form id="registrationForm">
-    <div class="row g-3">
-      <div class="col-md-6">
-        <label class="form-label">Full Name</label>
-        <input type="text" class="form-control" id="fullName" required />
-      </div>
-      <div class="col-md-6">
-        <label class="form-label">Email</label>
-        <input type="email" class="form-control" id="email" required />
-      </div>
-      <div class="col-md-6">
-        <label class="form-label">Date of Birth</label>
-        <input type="date" class="form-control" id="dob" required />
-      </div>
-      <div class="col-md-6">
-        <label class="form-label">Gender</label>
-        <select class="form-select" id="gender" required>
-          <option value="">Choose...</option>
-          <option>Male</option>
-          <option>Female</option>
-        </select>
-      </div>
-      <div class="col-md-6">
-        <label class="form-label">Grade</label>
-        <select class="form-select" id="grade" required>
-          <option value="">Choose...</option>
-          <option>6th</option>
-          <option>7th</option>
-          <option>8th</option>
-          <option>9th</option>
-          <option>10th</option>
-          <option>11th</option>
-          <option>12th</option>
-        </select>
-      </div>
-      <div class="col-md-12">
-        <button type="submit" class="btn btn-success w-100">Register Student</button>
-      </div>
-    </div>
-  </form>
-</div>
-
-<div class="container container-box mt-5">
-  <div class="d-flex justify-content-between align-items-center mb-4">
-    <h2 class="m-0">Registered Students</h2>
-    <button id="deleteAllBtn" class="btn btn-danger btn-sm">Delete All</button>
-  </div>
-  <div id="studentTableContainer"></div>
-</div>
-
-<!-- Edit Modal -->
-<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <form id="editForm">
-        <div class="modal-header">
-          <h5 class="modal-title">Edit Student</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-        </div>
-        <div class="modal-body">
-          <input type="hidden" id="editIndex" />
-          <input type="text" class="form-control mb-2" id="editFullName" placeholder="Full Name" required />
-          <input type="email" class="form-control mb-2" id="editEmail" placeholder="Email" required />
-          <input type="date" class="form-control mb-2" id="editDob" required />
-          <select class="form-select mb-2" id="editGender" required>
-            <option value="">Choose Gender</option>
-            <option>Male</option>
-            <option>Female</option>
-          </select>
-          <select class="form-select" id="editGrade" required>
-            <option value="">Choose Grade</option>
-            <option>6th</option>
-            <option>7th</option>
-            <option>8th</option>
-            <option>9th</option>
-            <option>10th</option>
-            <option>11th</option>
-            <option>12th</option>
-          </select>
-        </div>
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-success">Save Changes</button>
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Registration & Records</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container container-box">
+      <h2 class="mb-4 text-center">Student Registration</h2>
+      <form id="registrationForm">
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label class="form-label">Full Name</label>
+            <input type="text" class="form-control" id="fullName" required />
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" required />
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Date of Birth</label>
+            <input type="date" class="form-control" id="dob" required />
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Gender</label>
+            <select class="form-select" id="gender" required>
+              <option value="">Choose...</option>
+              <option>Male</option>
+              <option>Female</option>
+            </select>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Grade</label>
+            <select class="form-select" id="grade" required>
+              <option value="">Choose...</option>
+              <option>6th</option>
+              <option>7th</option>
+              <option>8th</option>
+              <option>9th</option>
+              <option>10th</option>
+              <option>11th</option>
+              <option>12th</option>
+            </select>
+          </div>
+          <div class="col-md-12">
+            <button type="submit" class="btn btn-success w-100">
+              Register Student
+            </button>
+          </div>
         </div>
       </form>
     </div>
-  </div>
-</div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<script src="script.js"></script>
-</body>
+    <div class="container container-box mt-5">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="m-0">Registered Students</h2>
+        <button id="deleteAllBtn" class="btn btn-danger btn-sm">
+          Delete All
+        </button>
+      </div>
+      <div id="studentTableContainer"></div>
+    </div>
+
+    <!-- Edit Modal -->
+    <div
+      class="modal fade"
+      id="editModal"
+      tabindex="-1"
+      aria-labelledby="editModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form id="editForm">
+            <div class="modal-header">
+              <h5 class="modal-title">Edit Student</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <input type="hidden" id="editIndex" />
+              <input
+                type="text"
+                class="form-control mb-2"
+                id="editFullName"
+                placeholder="Full Name"
+                required
+              />
+              <input
+                type="email"
+                class="form-control mb-2"
+                id="editEmail"
+                placeholder="Email"
+                required
+              />
+              <input
+                type="date"
+                class="form-control mb-2"
+                id="editDob"
+                required
+              />
+              <select class="form-select mb-2" id="editGender" required>
+                <option value="">Choose Gender</option>
+                <option>Male</option>
+                <option>Female</option>
+              </select>
+              <select class="form-select" id="editGrade" required>
+                <option value="">Choose Grade</option>
+                <option>6th</option>
+                <option>7th</option>
+                <option>8th</option>
+                <option>9th</option>
+                <option>10th</option>
+                <option>11th</option>
+                <option>12th</option>
+              </select>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-success">
+                Save Changes
+              </button>
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Cancel
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+  </body>
 </html>
